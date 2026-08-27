@@ -2,8 +2,10 @@
 
 </script>
 
+
 <template>
-  <component :is="$route.meta.layout"/>
+    Bu shaxsiy sahifa
+
 </template>
 
 <style scoped>

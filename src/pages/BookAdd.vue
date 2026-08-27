@@ -1,0 +1,143 @@
+<script setup>
+import { category } from "@/store/category.js"
+import InputForm from "@/components/html/InputForm.vue"
+import { computed, reactive, ref } from "vue"
+import { mediaObject } from "@/store/mediaObject.js"
+import { book } from "@/store/book.js"
+import { useRouter } from "vue-router"
+
+category().fetchCategories()
+
+const categories = computed(() => category().getCategories)
+
+const router = useRouter()
+
+const image = ref(null)
+const pdf = ref(null)
+
+function selectImage(event) {
+  const file = event.target.files[0]
+
+  if (!file) {
+    return
+  }
+
+  image.value = new FormData()
+  image.value.append("file", file)
+}
+
+function selectPdf(event) {
+  const file = event.target.files[0]
+
+  if (!file) {
+    return
+  }
+
+  pdf.value = new FormData()
+  pdf.value.append("file", file)
+}
+
+const newBook = reactive({
+  name: "",
+  description: "",
+  text: "",
+  category: "",
+  image: null,
+  file: null,
+})
+
+async function saveBook() {
+  try {
+    // 1. Rasm yuklash
+    await mediaObject().createMedia(image.value)
+
+    newBook.image = mediaObject().getMedia
+
+    // 2. PDF yuklash
+    await mediaObject().createMedia(pdf.value)
+
+    newBook.file = mediaObject().getMedia
+
+    // 3. Book yaratish
+    await book().createBook(newBook)
+
+    // 4. Homepage
+    await router.push("/")
+  } catch (error) {
+    console.error(
+      "Kitob qo'shishda xatolik:",
+      error.response?.data || error
+    )
+  }
+}
+</script>
+
+<template>
+  <div class="grid grid-cols-12">
+    <div class="col-span-12 text-2xl font-bold text-gray-600">
+      Kitobni qo'shing
+    </div>
+
+    <div class="col-span-8">
+      <InputForm
+        v-model="newBook.name"
+        input-id="bookName"
+        input-name="bookName"
+        input-placeholder="Kitob nomini kiriting"
+        input-type="text"
+        label-name="bookName"
+      />
+    </div>
+
+    <div class="col-span-8">
+      <InputForm
+        v-model="newBook.description"
+        input-id="bookDescription"
+        input-name="bookDescription"
+        input-placeholder="Kitob tavsifini kiriting"
+        input-type="text"
+        label-name="bookDescription"
+      />
+    </div>
+
+    <div class="col-span-8">
+      <input
+        class="border w-full bg-gray-700 border-gray-600 rounded text-white mt-4 p-2.5"
+        type="file"
+        accept="application/pdf"
+        @change="selectPdf"
+      />
+    </div>
+
+    <div class="col-span-8">
+      <select v-model="newBook.category"
+              class="border w-full bg-gray-700 border-gray-600 rounded text-white mt-4 p-2.5">
+        <option>Kategoriyani tanlang</option>
+        <option v-for="category of categories" :value="category['@id']">{{ category.name }}</option>
+      </select>
+    </div>
+
+    <div class="col-span-8">
+      <input
+        class="border w-full bg-gray-700 border-gray-600 rounded text-white mt-4 p-2.5"
+        placeholder="Kitob rasmini tanlang"
+        type="file"
+        @change="selectImage($event)"
+      />
+    </div>
+
+    <div class="col-span-8">
+      <button
+        class="bg-blue-800 w-full mt-5 py-2 rounded text-white font-bold hover:bg-blue-600"
+        type="button"
+        @click="saveBook"
+      >
+        Saqlash
+      </button>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+
+</style>
