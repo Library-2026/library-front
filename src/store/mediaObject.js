@@ -7,13 +7,11 @@ export const mediaObject = defineStore("mediaObject", {
       media: null,
     };
   },
-
   getters: {
     getMedia() {
       return this.media;
     },
   },
-
   actions: {
     async createMedia(data) {
       try {

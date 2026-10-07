@@ -33,7 +33,6 @@ const changePage = async (page) => {
       class="inline-flex -space-x-px rounded-md shadow-sm"
     >
 
-      <!-- Previous -->
       <button
         :disabled="currentPage === 1"
         class="
@@ -59,7 +58,6 @@ const changePage = async (page) => {
         ‹
       </button>
 
-      <!-- Pages -->
       <button
         v-for="page in totalPages"
         :key="page"
@@ -75,7 +73,6 @@ const changePage = async (page) => {
         {{ page }}
       </button>
 
-      <!-- Next -->
       <button
         :disabled="currentPage === totalPages"
         class="

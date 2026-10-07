@@ -7,11 +7,8 @@ import { book } from "@/store/book.js"
 import { useRouter } from "vue-router"
 
 category().fetchCategories()
-
 const categories = computed(() => category().getCategories)
-
 const router = useRouter()
-
 const image = ref(null)
 const pdf = ref(null)
 
@@ -48,20 +45,16 @@ const newBook = reactive({
 
 async function saveBook() {
   try {
-    // 1. Rasm yuklash
     await mediaObject().createMedia(image.value)
 
     newBook.image = mediaObject().getMedia
 
-    // 2. PDF yuklash
     await mediaObject().createMedia(pdf.value)
 
     newBook.file = mediaObject().getMedia
 
-    // 3. Book yaratish
     await book().createBook(newBook)
 
-    // 4. Homepage
     await router.push("/")
   } catch (error) {
     console.error(

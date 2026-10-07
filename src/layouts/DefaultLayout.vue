@@ -7,10 +7,8 @@ import TheFooter from "@/components/TheFooter.vue";
 <template>
   <div class="min-h-screen flex flex-col">
 
-    <!-- Header -->
     <TheHeader />
 
-    <!-- Main -->
     <main
       class="
         flex-1
@@ -23,10 +21,8 @@ import TheFooter from "@/components/TheFooter.vue";
       "
     >
 
-      <!-- Category -->
       <TheCategory />
 
-      <!-- Books -->
       <div
         class="
           col-span-1
@@ -44,11 +40,11 @@ import TheFooter from "@/components/TheFooter.vue";
 
     </main>
 
-    <!-- Footer -->
     <TheFooter />
 
   </div>
 </template>
 
 <style>
+
 </style>

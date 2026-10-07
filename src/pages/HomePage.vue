@@ -6,7 +6,6 @@ import ThePagination from "@/components/ThePagination.vue";
 <template>
   <div class="min-w-0 w-full flex-1 min-h-0 flex flex-col">
 
-    <!-- Books -->
     <div
       class="
         grid
@@ -22,7 +21,6 @@ import ThePagination from "@/components/ThePagination.vue";
       <TheBook />
     </div>
 
-    <!-- Pagination -->
     <div
       class="
         mt-auto

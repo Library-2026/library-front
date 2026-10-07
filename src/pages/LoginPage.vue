@@ -1,5 +1,4 @@
 <script setup>
-
 import InputForm from "@/components/html/InputForm.vue"
 import {reactive, ref,} from "vue"
 import {authorization} from "@/store/authorization.js"
@@ -28,8 +27,6 @@ function register() {
   router.push('/register')
 
 }
-
-
 </script>
 
 <template>
@@ -61,9 +58,8 @@ function register() {
                 input-type="password"
                 label-name="Parol"
               />
-
-
             </div>
+
             <button
               class="text-white font-bold bg-blue-800 w-full py-2 rounded hover:bg-blue-600 focus:ring-2"
               type="button"
@@ -75,9 +71,8 @@ function register() {
             <br/><br/>
 
             <button
-
-              class="text-white font-bold bg-green-700 w-full
-                                  py-2 rounded hover:bg-green-400 focus:ring-2"
+              class="
+              text-white font-bold bg-green-700 w-full py-2 rounded hover:bg-green-400 focus:ring-2"
               link="/register"
               type="button"
               @click="register"
@@ -85,15 +80,10 @@ function register() {
               Akkaunt yo'qmi?
             </button>
 
-
           </form>
         </div>
-
-
       </div>
     </div>
-
-
   </section>
 </template>
 

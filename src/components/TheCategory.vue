@@ -3,9 +3,7 @@ import { category } from "@/store/category.js";
 import { computed } from "vue";
 
 const categoryStore = category();
-
 categoryStore.fetchCategories();
-
 const categories = computed(() => categoryStore.getCategories);
 </script>
 
@@ -52,4 +50,5 @@ const categories = computed(() => categoryStore.getCategories);
 </template>
 
 <style>
+
 </style>

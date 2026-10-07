@@ -18,7 +18,6 @@ const ifNotAuthorized = () => {
 }
 
 const routes = [
-
   {
     path: '/',
     component: () => import('@/pages/HomePage.vue'),
@@ -31,7 +30,6 @@ const routes = [
     meta: {layout: defineAsyncComponent(() => import('@/layouts/DefaultLayout.vue'))},
     beforeEnter: ifAuthorized
   },
-
   {
     path: '/login',
     component: () => import('@/pages/LoginPage.vue'),
@@ -77,7 +75,6 @@ const routes = [
     meta: {layout: defineAsyncComponent(() => import('@/layouts/DefaultLayout.vue'))},
     beforeEnter: ifAuthorized
   },
-
 ]
 
 export default createRouter({

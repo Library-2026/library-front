@@ -34,8 +34,6 @@ defineEmits(['update:modelValue'])
     :type="inputType"
     class="border rounded p-2 w-full bg-gray-700 border-gray-600 text-white"
     @input="$emit('update:modelValue', $event.target.value)"
-
-
   />
 </template>
 

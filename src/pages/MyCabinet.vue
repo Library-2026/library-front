@@ -31,7 +31,6 @@ const avatarLetter = computed(
       Shaxsiy sahifa
     </h1>
 
-    <!-- Profil ma’lumotlari -->
     <section class="bg-white border rounded-xl p-6">
       <div class="flex items-center gap-4">
         <div
@@ -62,7 +61,6 @@ const avatarLetter = computed(
       </div>
     </section>
 
-    <!-- Foydalanuvchi kitoblari -->
     <section class="mt-8">
       <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
         <h2 class="text-xl font-bold text-gray-700">
@@ -78,7 +76,6 @@ const avatarLetter = computed(
         </RouterLink>
       </div>
 
-      <!-- Kitoblar mavjud bo‘lsa -->
       <div
           v-if="myBooks.length"
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
@@ -98,7 +95,6 @@ const avatarLetter = computed(
         </article>
       </div>
 
-      <!-- Kitoblar bo‘lmasa -->
       <div
           v-else
           class="bg-gray-50 border border-dashed rounded-xl

@@ -4,12 +4,12 @@ import InputForm from "@/components/html/InputForm.vue";
 import {computed, onMounted, reactive, ref} from "vue";
 
 const categoryStore = category();
+const categories = computed(() => categoryStore.getCategories);
+const deleteCategory = ref("");
 
 onMounted(() => {
   categoryStore.fetchCategories();
 });
-
-const categories = computed(() => categoryStore.getCategories);
 
 const newCategory = reactive({
   name: "",
@@ -102,8 +102,6 @@ const renameCategory = async () => {
     );
   }
 };
-
-const deleteCategory = ref("");
 
 const removeCategory = async () => {
   if (!deleteCategory.value) {
@@ -344,15 +342,10 @@ const removeCategory = async () => {
           </button>
 
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </template>
-
 
 <style scoped>
 

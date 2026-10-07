@@ -5,9 +5,7 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 const bookStore = book();
-
 const books = computed(() => bookStore.getBooks);
-
 const API_URL = import.meta.env.VITE_API_URL;
 
 watch(
@@ -36,7 +34,6 @@ watch(
       flex-col
     "
   >
-    <!-- RASM -->
     <img
       v-if="item.imageUrl"
       :src="API_URL + item.imageUrl"
@@ -44,7 +41,6 @@ watch(
       class="h-48 w-full object-cover"
     />
 
-    <!-- Rasm bo'lmasa -->
     <div
       v-else
       class="h-48 w-full flex items-center justify-center bg-gray-200"

@@ -16,23 +16,18 @@ export const book = defineStore("book", {
     getBooks() {
       return this.books;
     },
-
     getBook() {
       return this.book;
     },
-
     getCurrentPage() {
       return this.currentPage;
     },
-
     getTotalItems() {
       return this.totalItems;
     },
-
     getItemsPerPage() {
       return this.itemsPerPage;
     },
-
     getTotalPages() {
       return Math.ceil(this.totalItems / this.itemsPerPage);
     },
@@ -49,11 +44,9 @@ export const book = defineStore("book", {
         }
 
         const url = `/books?${params.toString()}`;
-
         console.log("Kitoblar uchun URL:", url);
 
         const response = await axios.get(url);
-
         console.log("API response:", response.data);
 
         const books = response.data.member || [];

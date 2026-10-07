@@ -5,7 +5,6 @@ export const user = defineStore("user", {
   state: () => ({
     user: {},
   }),
-
   getters: {
     getUsers() {
       return this.user;

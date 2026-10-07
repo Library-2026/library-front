@@ -52,4 +52,5 @@ function goBack() {
 </template>
 
 <style scoped>
+
 </style>
