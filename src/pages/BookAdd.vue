@@ -100,30 +100,59 @@ async function saveBook() {
       />
     </div>
 
-    <div class="col-span-8">
+    <div class="col-span-8 mt-4">
+      <label for="bookFile" class="block font-semibold text-gray-700 mb-2">
+        Kitob fayli
+      </label>
+
       <input
-        class="border w-full bg-gray-700 border-gray-600 rounded text-white mt-4 p-2.5"
-        type="file"
-        accept="application/pdf"
-        @change="selectPdf"
+          id="bookFile"
+          class="border w-full bg-gray-700 border-gray-600 rounded text-white p-2.5"
+          type="file"
+          accept=".pdf,.jpg,.jpeg,.png"
+          aria-describedby="bookFileHelp"
+          @change="selectPdf"
       />
+
+      <p id="bookFileHelp" class="text-sm text-gray-500 mt-1">
+        O‘qish uchun kitob matni yoki sahifa rasmini yuklang. PDF, JPG, PNG.
+      </p>
     </div>
 
     <div class="col-span-8">
-      <select v-model="newBook.category"
-              class="border w-full bg-gray-700 border-gray-600 rounded text-white mt-4 p-2.5">
-        <option>Kategoriyani tanlang</option>
-        <option v-for="category of categories" :value="category['@id']">{{ category.name }}</option>
+      <select
+          v-model="newBook.category"
+          class="border w-full bg-gray-700 border-gray-600 rounded text-white mt-4 p-2.5"
+      >
+        <option disabled value="">Kategoriyani tanlang</option>
+
+        <option
+            v-for="category in categories"
+            :key="category['@id']"
+            :value="category['@id']"
+        >
+          {{ category.name }}
+        </option>
       </select>
     </div>
 
-    <div class="col-span-8">
+    <div class="col-span-8 mt-4">
+      <label for="bookCover" class="block font-semibold text-gray-700 mb-2">
+        Kitob muqovasi
+      </label>
+
       <input
-        class="border w-full bg-gray-700 border-gray-600 rounded text-white mt-4 p-2.5"
-        placeholder="Kitob rasmini tanlang"
-        type="file"
-        @change="selectImage($event)"
+          id="bookCover"
+          class="border w-full bg-gray-700 border-gray-600 rounded text-white p-2.5"
+          type="file"
+          accept=".jpg,.jpeg,.png"
+          aria-describedby="bookCoverHelp"
+          @change="selectImage"
       />
+
+      <p id="bookCoverHelp" class="text-sm text-gray-500 mt-1">
+        Kitoblar ro‘yxatida ko‘rinadigan muqova rasmini yuklang. JPG, PNG.
+      </p>
     </div>
 
     <div class="col-span-8">
